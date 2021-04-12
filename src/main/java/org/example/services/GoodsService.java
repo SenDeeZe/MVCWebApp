@@ -10,18 +10,13 @@ import java.util.List;
 
 @Service
 @Transactional
-public class GoodsServiceImpl {
+public class GoodsService {
     @Autowired
     private GoodsRepository goodsRepository;
 
 
     public void create(Goods goods) {
         goodsRepository.save(goods);
-    }
-
-
-    public Goods read(int id) {
-        return goodsRepository.getById(id);
     }
 
 

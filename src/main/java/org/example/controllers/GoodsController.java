@@ -1,7 +1,7 @@
 package org.example.controllers;
 
 import org.example.entities.Goods;
-import org.example.services.GoodsServiceImpl;
+import org.example.services.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +14,7 @@ import java.util.List;
 public class GoodsController {
 
     @Autowired
-    private GoodsServiceImpl goodsService;
+    private GoodsService goodsService;
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     public ModelAndView goodsPage() {
@@ -35,7 +35,6 @@ public class GoodsController {
 
     @RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
     public ModelAndView goodsUpdatePage(@PathVariable("id") Integer id) {
-        System.out.println("update1");
         Goods goods = goodsService.findById(id);
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("goodsUpdatePage");
@@ -45,7 +44,6 @@ public class GoodsController {
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public ModelAndView updateGoods(@ModelAttribute("goods") Goods goods) {
-        System.out.println("update2");
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("redirect:/goods");
         goodsService.update(goods);
@@ -54,7 +52,6 @@ public class GoodsController {
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public ModelAndView addGoodsPage() {
-        System.out.println("create1");
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("goodsUpdatePage");
         return modelAndView;
@@ -62,7 +59,6 @@ public class GoodsController {
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public ModelAndView addGoods(@ModelAttribute("order") Goods goods) {
-        System.out.println("create2");
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("redirect:/goods");
         goodsService.create(goods);

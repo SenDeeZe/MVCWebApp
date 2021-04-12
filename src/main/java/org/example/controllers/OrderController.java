@@ -1,7 +1,7 @@
 package org.example.controllers;
 
 import org.example.entities.Order;
-import org.example.services.OrderServiceImpl;
+import org.example.services.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +14,7 @@ import java.util.List;
 public class OrderController {
 
     @Autowired
-    private OrderServiceImpl orderService;
+    private OrderService orderService;
 
 
     @GetMapping({"/hello"})
@@ -44,7 +44,6 @@ public class OrderController {
 
     @RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
     public ModelAndView orderUpdatePage(@PathVariable("id") Integer id) {
-        System.out.println("update1");
         Order order = orderService.findById(id);
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("orderUpdatePage");
@@ -54,7 +53,6 @@ public class OrderController {
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public ModelAndView updateOrder(@ModelAttribute("order") Order order) {
-        System.out.println("update2");
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("redirect:/order");
         orderService.update(order);
@@ -63,7 +61,6 @@ public class OrderController {
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public ModelAndView addOrderPage() {
-        System.out.println("create1");
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("orderUpdatePage");
         return modelAndView;

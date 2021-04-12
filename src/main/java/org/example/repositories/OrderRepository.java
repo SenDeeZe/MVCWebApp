@@ -9,7 +9,5 @@ import java.util.List;
 
 @Repository
 public interface OrderRepository extends JpaRepository<Order, Integer> {
-    @Query("select o.client from  Order o")
-    List<String> joinSting();
     Order getById(Integer id);
 }

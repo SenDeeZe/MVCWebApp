@@ -3,8 +3,8 @@ package org.example.utils;
 import lombok.RequiredArgsConstructor;
 import org.example.entities.Goods;
 import org.example.entities.Order;
-import org.example.services.GoodsServiceImpl;
-import org.example.services.OrderServiceImpl;
+import org.example.services.GoodsService;
+import org.example.services.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Service;
@@ -14,10 +14,10 @@ import org.springframework.stereotype.Service;
 public class InitiateUtils implements CommandLineRunner {
 
     @Autowired
-    private OrderServiceImpl orderService;
+    private OrderService orderService;
 
     @Autowired
-    private GoodsServiceImpl goodsService;
+    private GoodsService goodsService;
 
 
     @Override

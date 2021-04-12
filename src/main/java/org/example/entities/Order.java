@@ -1,6 +1,7 @@
 package org.example.entities;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table(name = "MYORDERS")
@@ -24,6 +25,22 @@ public class Order {
     @Override
     public String toString() {
         return id + " " + client + " " + date + " " + address;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Order order = (Order) o;
+        return Objects.equals(id, order.id) &&
+                Objects.equals(client, order.client) &&
+                Objects.equals(date, order.date) &&
+                Objects.equals(address, order.address);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, client, date, address);
     }
 
     public Integer getId() {
