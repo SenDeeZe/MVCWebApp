@@ -30,8 +30,8 @@ public class InitiateUtils implements CommandLineRunner {
             order2.setClient("Ivan");
             order2.setDate("20");
             order2.setAddress("Sta");
-            orderService.save(order1);
-            orderService.save(order2);
+            orderService.create(order1);
+            orderService.create(order2);
             for (Order order: orderService.getAll())
                 System.out.println(order);
             Goods goods1 = new Goods();

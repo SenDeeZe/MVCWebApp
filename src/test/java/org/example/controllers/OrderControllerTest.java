@@ -69,6 +69,14 @@ class OrderControllerTest {
     }
 
     @Test
+    void updateOrder() {
+        ModelAndView modelAndView = orderController.updateOrder(order);
+        assertEquals("redirect:/order", modelAndView.getViewName());
+        assertEquals(order, modelAndView.getModel().get("redirect:/order"));
+        Mockito.verify(orderService, Mockito.times(1)).update(Mockito.eq(order));
+    }
+
+    @Test
     void addOrderPage() {
         ModelAndView modelAndView = orderController.addOrderPage();
         assertEquals("orderUpdatePage", modelAndView.getViewName());
@@ -80,7 +88,7 @@ class OrderControllerTest {
         ModelAndView modelAndView = orderController.addOrder(order);
         assertEquals("redirect:/order", modelAndView.getViewName());
         assertEquals(order, modelAndView.getModel().get("redirect:/order"));
-        Mockito.verify(orderService, Mockito.times(1)).create(order);
+        Mockito.verify(orderService, Mockito.times(1)).create(Mockito.eq(order));
     }
 
     @Test
@@ -90,4 +98,6 @@ class OrderControllerTest {
         assertEquals(order, modelAndView.getModel().get("redirect:/order"));
         Mockito.verify(orderService, Mockito.times(1)).delete(anyInt());
     }
+
+
 }
