@@ -1,5 +1,6 @@
 package org.example.entities;
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table(name = "MYGOODS")
@@ -45,5 +46,20 @@ public class Goods {
 
     public void setPrice(Double price) {
         this.price = price;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Goods goods = (Goods) o;
+        return id.equals(goods.id) &&
+                Objects.equals(name, goods.name) &&
+                Objects.equals(price, goods.price);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, price);
     }
 }

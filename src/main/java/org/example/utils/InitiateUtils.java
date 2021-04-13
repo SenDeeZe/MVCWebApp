@@ -37,7 +37,7 @@ public class InitiateUtils implements CommandLineRunner {
             Goods goods1 = new Goods();
             goods1.setName("peach");
             goods1.setPrice(231.0);
-            goodsService.save(goods1);
+            goodsService.create(goods1);
             for (Goods goods: goodsService.getAll())
                 System.out.println(goods);
     }

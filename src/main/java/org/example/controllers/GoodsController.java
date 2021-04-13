@@ -25,7 +25,7 @@ public class GoodsController {
         return modelAndView;
     }
     @RequestMapping(value = "/find/", method = RequestMethod.POST)
-    public ModelAndView findOrderPage(@RequestParam("id") Integer id) {
+    public ModelAndView findGoodsPage(@RequestParam("id") Integer id) {
         ModelAndView modelAndView = new ModelAndView();
         Goods goods = goodsService.findById(id);
         modelAndView.setViewName("findGoodsPage");

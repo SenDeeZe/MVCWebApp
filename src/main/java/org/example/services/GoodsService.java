@@ -11,6 +11,7 @@ import java.util.List;
 @Service
 @Transactional
 public class GoodsService {
+
     @Autowired
     private GoodsRepository goodsRepository;
 
@@ -37,9 +38,5 @@ public class GoodsService {
 
     public List<Goods> getAll() {
         return goodsRepository.findAll();
-    }
-
-    public void save(Goods goods){
-        goodsRepository.save(goods);
     }
 }
